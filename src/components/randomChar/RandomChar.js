@@ -141,6 +141,19 @@ const RandomChar = (props) => {
             })
     }
 
+    // const updateChar = useCallback(() => {
+    //     clearError();
+    //     const id = Math.floor(Math.random() * (1011400 - 1011300) + 1011000);
+    //     getOneCharacter(id)
+    //         .then(res => {
+    //             onCharLoaded(res);
+    //         })
+    // }, [])
+    //
+    // useEffect(() => {
+    //     updateChar();
+    // }, [updateChar]);
+
     const errorMessage = error ? <ErrorMessage/> : null;
     const spinner = loading ? <Spinner/> : null;
     const content = !(loading || error) ? <View char={char}/> : null;

@@ -2,6 +2,8 @@ import {lazy, Suspense} from "react";
 import {BrowserRouter, Route, Switch} from "react-router-dom";
 
 import AppHeader from "../appHeader/AppHeader";
+import SingleCharacterPage from "../pages/SingleCharacterPage";
+
 // import {ComicsPage, SingleComicPage, Page404, MainPage} from '../pages';
 
 const Page404 = lazy(() => import('../pages/404'))
@@ -28,13 +30,15 @@ const App = () => {
                             <Route exact path="/comics/:comicId">
                                 <SingleComicPage/>
                             </Route>
+                            <Route exact path="/characters/:id">
+                                <SingleCharacterPage/>
+                            </Route>
                             <Route path="*">
                                 <Page404/>
                             </Route>
                         </Switch>
 
                     </Suspense>
-
                 </main>
             </div>
         </BrowserRouter>

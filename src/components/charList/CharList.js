@@ -169,6 +169,7 @@ import './charList.scss';
 import useMarvelService from "../../services/MarvelService";
 import Spinner from "../spinner/spinner";
 import ErrorMessage from "../errorMessage/ErrorMessage";
+import {CSSTransition, TransitionGroup} from "react-transition-group";
 
 const CharList = (props) => {
 
@@ -216,34 +217,40 @@ const CharList = (props) => {
     function renderItems(charList) {
         const elem = charList.map((item, i) => {
             return (
-                <li tabIndex={0} className="char__item" key={item.id}
-                    // onClick={() => {
-                    //     this.props.onCharSelected(item.id);
-                    // }}
-                    ref={(elem) => itemsRefs.current[i] = elem}
-                    onClick={() => {
-                        props.onCharSelected(item.id);
-                        focusOnItem(i);
-                    }}
-                    onKeyPress={(e) => {
-                        if (e.key === ' ' || e.key === "Enter") {
+                <CSSTransition key={item.id} timeout={500} classNames="char__item">
+                    <li tabIndex={0} className="char__item"
+                        // onClick={() => {
+                        //     this.props.onCharSelected(item.id);
+                        // }}
+                        ref={(elem) => itemsRefs.current[i] = elem}
+                        onClick={() => {
                             props.onCharSelected(item.id);
                             focusOnItem(i);
-                        }
-                    }}>
-                    >
-                    <img src={item.thumbnail}
-                         className={`${item && item.thumbnail.includes('image_not_available') ? ' randomchar__img_contain' : ''}`}
-                         alt={item.name}/>
-                    <div className="char__name">{item.name}</div>
-                </li>
+                        }}
+                        onKeyPress={(e) => {
+                            if (e.key === ' ' || e.key === "Enter") {
+                                props.onCharSelected(item.id);
+                                focusOnItem(i);
+                            }
+                        }}>
+                        >
+                        <img src={item.thumbnail}
+                             className={`${item && item.thumbnail.includes('image_not_available') ? ' randomchar__img_contain' : ''}`}
+                             alt={item.name}/>
+                        <div className="char__name">{item.name}</div>
+                    </li>
+                </CSSTransition>
             )
         });
 
         return (
             <ul className="char__grid">
-                {elem}
+                <TransitionGroup component={null}>
+                    {elem}
+                </TransitionGroup>
+
             </ul>
+
         )
     }
 
@@ -254,7 +261,6 @@ const CharList = (props) => {
     // const htmlChars = !(loading || error) ? elements : null;
 
     const buttonSpinner = (newItemLoading) ? <Spinner/> : null;
-
 
 
     return (

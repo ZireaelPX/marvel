@@ -174,6 +174,7 @@ const CharInfo = (props) => {
         if (!charId) {
             return null;
         }
+
         clearError();
         getOneCharacter(charId)
             .then(res => {
