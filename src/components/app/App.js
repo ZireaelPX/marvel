@@ -1,5 +1,5 @@
 import {lazy, Suspense} from "react";
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Switch, HashRouter} from "react-router-dom";
 
 import AppHeader from "../appHeader/AppHeader";
 import SingleCharacterPage from "../pages/SingleCharacterPage";
@@ -13,7 +13,7 @@ const SingleComicPage = lazy(() => import('../pages/SingleComicPage'))
 const App = () => {
 
     return (
-        <BrowserRouter>
+        <HashRouter>
             <div className="app">
                 <AppHeader/>
                 <main>
@@ -38,7 +38,7 @@ const App = () => {
                     </Suspense>
                 </main>
             </div>
-        </BrowserRouter>
+        </HashRouter>
     )
 
 }
