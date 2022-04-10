@@ -1,0 +1,42 @@
+{
+  "files": {
+    "main.css": "./static/css/main.2fde9f11.chunk.css",
+    "main.js": "./static/js/main.40482754.chunk.js",
+    "main.js.map": "./static/js/main.40482754.chunk.js.map",
+    "runtime-main.js": "./static/js/runtime-main.0dcb1041.js",
+    "runtime-main.js.map": "./static/js/runtime-main.0dcb1041.js.map",
+    "static/js/2.345223f5.chunk.js": "./static/js/2.345223f5.chunk.js",
+    "static/js/2.345223f5.chunk.js.map": "./static/js/2.345223f5.chunk.js.map",
+    "static/js/3.10b8ea70.chunk.js": "./static/js/3.10b8ea70.chunk.js",
+    "static/js/3.10b8ea70.chunk.js.map": "./static/js/3.10b8ea70.chunk.js.map",
+    "static/css/4.46705194.chunk.css": "./static/css/4.46705194.chunk.css",
+    "static/js/4.325b275c.chunk.js": "./static/js/4.325b275c.chunk.js",
+    "static/js/4.325b275c.chunk.js.map": "./static/js/4.325b275c.chunk.js.map",
+    "static/css/5.6f619b6a.chunk.css": "./static/css/5.6f619b6a.chunk.css",
+    "static/js/5.51930449.chunk.js": "./static/js/5.51930449.chunk.js",
+    "static/js/5.51930449.chunk.js.map": "./static/js/5.51930449.chunk.js.map",
+    "static/css/6.3d2c11ed.chunk.css": "./static/css/6.3d2c11ed.chunk.css",
+    "static/js/6.0acb4c75.chunk.js": "./static/js/6.0acb4c75.chunk.js",
+    "static/js/6.0acb4c75.chunk.js.map": "./static/js/6.0acb4c75.chunk.js.map",
+    "static/js/7.d053e0ea.chunk.js": "./static/js/7.d053e0ea.chunk.js",
+    "static/js/7.d053e0ea.chunk.js.map": "./static/js/7.d053e0ea.chunk.js.map",
+    "index.html": "./index.html",
+    "static/css/4.46705194.chunk.css.map": "./static/css/4.46705194.chunk.css.map",
+    "static/css/5.6f619b6a.chunk.css.map": "./static/css/5.6f619b6a.chunk.css.map",
+    "static/css/6.3d2c11ed.chunk.css.map": "./static/css/6.3d2c11ed.chunk.css.map",
+    "static/css/main.2fde9f11.chunk.css.map": "./static/css/main.2fde9f11.chunk.css.map",
+    "static/js/3.10b8ea70.chunk.js.LICENSE.txt": "./static/js/3.10b8ea70.chunk.js.LICENSE.txt",
+    "static/media/Avengers.4065c8f9.png": "./static/media/Avengers.4065c8f9.png",
+    "static/media/Avengers_logo.9eaf2193.png": "./static/media/Avengers_logo.9eaf2193.png",
+    "static/media/Spinner-2.0c299348.gif": "./static/media/Spinner-2.0c299348.gif",
+    "static/media/error.42292aa1.gif": "./static/media/error.42292aa1.gif",
+    "static/media/mjolnir.61f31e18.png": "./static/media/mjolnir.61f31e18.png",
+    "static/media/vision.067d4ae1.png": "./static/media/vision.067d4ae1.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.0dcb1041.js",
+    "static/js/3.10b8ea70.chunk.js",
+    "static/css/main.2fde9f11.chunk.css",
+    "static/js/main.40482754.chunk.js"
+  ]
+}
