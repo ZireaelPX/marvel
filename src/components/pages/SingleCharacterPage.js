@@ -2,15 +2,16 @@ import {useParams} from "react-router-dom";
 import useMarvelService from "../../services/MarvelService";
 import {useEffect, useState} from "react";
 import {Helmet} from "react-helmet";
+import setContent from "../../utils/setContent";
 
 
 
 const SingleCharacterPage = (props) => {
-    const [char, setChar] = useState(null  );
+    const [char, setChar] = useState(null);
     const {id} = useParams();
 
 
-    const {getOneCharacter} = useMarvelService();
+    const {getOneCharacter, process, setProcess} = useMarvelService();
 
     useEffect(()=> {
         getCharacter();
@@ -19,34 +20,37 @@ const SingleCharacterPage = (props) => {
     const getCharacter = () => {
         getOneCharacter(id)
             .then(res => {
-                console.log(res)
                 setChar(res);
+            })
+            .then(() => {
+                setProcess('confirmed')
             })
             .catch(err => {
                 console.log(err)
             })
     }
-    const loading = char ? <View char={char}/> : null;
+    // const loading = char ? <View char={char}/> : null;
     return (
         <>
-            {loading}
+            {/*{loading}*/}
+            {setContent(process, View, char)}
         </>
     )
 }
 
-const View = ({char}) => {
+const View = ({data}) => {
     return (
         <div>
             <Helmet>
                 <meta
                     name="description"
-                    content={`${char.name}`}
+                    content={`${data.name}`}
                 />
-                <title>Marvel - {char.name}</title>
+                <title>Marvel - {data.name}</title>
             </Helmet>
             Page characters:
-            <p>Name: {char.name}</p>
-            <img src={char.thumbnail} alt=""/>
+            <p>Name: {data.name}</p>
+            <img src={data.thumbnail} alt=""/>
         </div>
     )
 }

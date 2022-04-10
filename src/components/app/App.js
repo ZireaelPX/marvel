@@ -17,10 +17,8 @@ const App = () => {
             <div className="app">
                 <AppHeader/>
                 <main>
-
                     <Suspense fallback={<span>Loading...</span>}>
                         <Switch>
-
                             <Route exact path="/">
                                 <MainPage/>
                             </Route>
@@ -37,7 +35,6 @@ const App = () => {
                                 <Page404/>
                             </Route>
                         </Switch>
-
                     </Suspense>
                 </main>
             </div>

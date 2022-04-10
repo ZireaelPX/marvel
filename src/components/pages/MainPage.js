@@ -26,7 +26,7 @@ const MainPage = () => {
                 />
                 <title>Marvel information</title>
             </Helmet>
-            <CharSearchForm/>
+            {/*<CharSearchForm/>*/}
             <ErrorBoundary>
                 <RandomChar/>
             </ErrorBoundary>

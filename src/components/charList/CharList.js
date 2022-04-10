@@ -161,7 +161,7 @@
 //
 // export default CharList;
 
-import {useState, useEffect, useRef} from "react";
+import {useState, useEffect, useRef, useMemo} from "react";
 import PropTypes from 'prop-types';
 
 
@@ -171,6 +171,21 @@ import Spinner from "../spinner/spinner";
 import ErrorMessage from "../errorMessage/ErrorMessage";
 import {CSSTransition, TransitionGroup} from "react-transition-group";
 
+const setContent = (process, Component, newItemLoading) => {
+    switch (process) {
+        case 'waiting':
+            return <Spinner/>;
+        case 'loading':
+            return newItemLoading ? <Component/> : <Spinner/>;
+        case 'confirmed':
+            return <Component/>;
+        case 'error':
+            return <ErrorMessage/>;
+        default:
+            throw new Error('Unexpected process state')
+    }
+}
+
 const CharList = (props) => {
 
     const [charList, setCharList] = useState([]);
@@ -178,7 +193,7 @@ const CharList = (props) => {
     const [offset, setOffset] = useState(210);
     const [charEnded, setCharEnded] = useState(false);
 
-    const {loading, error, getAllCharacters} = useMarvelService();
+    const {getAllCharacters, process, setProcess} = useMarvelService();
 
     useEffect(() => {
         onRequest(offset, true);
@@ -188,6 +203,9 @@ const CharList = (props) => {
         initial ? setNewItemLoading(false) : setNewItemLoading(true);
         getAllCharacters(offset)
             .then(onAllCharLoaded)
+            .then(() => {
+                setProcess('confirmed')
+            })
     }
 
     const onAllCharLoaded = (newCharList) => {
@@ -215,6 +233,7 @@ const CharList = (props) => {
     }
 
     function renderItems(charList) {
+        console.log('render')
         const elem = charList.map((item, i) => {
             return (
                 <CSSTransition key={item.id} timeout={500} classNames="char__item">
@@ -248,25 +267,18 @@ const CharList = (props) => {
                 <TransitionGroup component={null}>
                     {elem}
                 </TransitionGroup>
-
             </ul>
-
         )
     }
 
-    const elements = renderItems(charList);
-
-    const errorMessage = error ? <ErrorMessage/> : null;
-    const spinner = loading && !newItemLoading ? <Spinner/> : null;
-    // const htmlChars = !(loading || error) ? elements : null;
-
     const buttonSpinner = (newItemLoading) ? <Spinner/> : null;
 
+    const elements = useMemo(() => {
+        return setContent(process, () => renderItems(charList), newItemLoading)
+    }, [process])
 
     return (
         <div className="char__list">
-            {errorMessage}
-            {spinner}
             {elements}
             <button
                 className="button button__main button__long"
